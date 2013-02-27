@@ -47,6 +47,14 @@ var _ = require('./underscore.js');
         };
     };
 
+    o.chain = function (func) {
+      return function () {
+            var self = this;
+            func.apply( this, arguments );
+            return this;
+      };
+    };
+
     o.extend = function (parent, constructor) {
         var child = o.around(
             parent,
